@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Calorie Counter-Home
+{% endblock title %}
+
+{% block page_content %}
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} begin-content" role="alert">
+{{message}}
+</div>
+{% endfor %}
+
+
+<div class="begin-content">
+    {% for nutrition in nfl %}
+    <div class="py-3 border rounded my-3">
+        <div class="row">
+            <h3 class="col offset-md-1 col-md-9"><strong>{{nutrition.food_name.title}}</strong></h3>
+            <div class="col col-md-1">
+                <a href="{% url 'mainapp:add' nutrition.id %}">
+                    <button type="button" class="btn btn-md float-right" >
+                        <span class="fa fa-plus text-success" aria-hidden="true"></span>
+                    </button>
+                </a>
+            </div>
+            <div class="col col-md-1">
+                <a href="{% url 'mainapp:remove' nutrition.id %}" >
+                    <button type="button" class="btn btn-md float-left">                    
+                        <span class="fa fa-minus text-danger" aria-hidden="true"></span>                    
+                    </button>
+                </a>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col offset-md-1 col-md-1">
+                <i>{{nutrition.serving_size}} g</i>
+            </div>
+            <div class="col col-md-2">
+                <i>{{nutrition.calories}} calorie{{ nutrition.calories|pluralize}}</i>
+            </div>
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock page_content %}

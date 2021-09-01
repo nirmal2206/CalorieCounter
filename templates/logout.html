@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Calorie Counter-Logout
+{% endblock title %}
+
+{% block page_content %}
+<div class="jumbotron begin-content">
+    <h1 class="display-4 text-center">You Have Been Logged Out</h1>
+    <p class="lead text-center">Thank you for using our website</p>
+    <hr class="my-4">
+    <p class="text-center">Please <a href="{% url 'accounts:login' %}"> click here </a>to login back to our site</p>
+</div>
+{% endblock page_content %}

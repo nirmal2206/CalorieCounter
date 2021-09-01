@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Calorie Counter-Home
+{% endblock title %}
+
+{% block page_content %}
+
+{% for message in messages %}
+<div class="alert alert-{{message.tags}} begin-content" role="alert">
+{{message}}
+</div>
+{% endfor %}
+
+<div class="begin-content">
+    {% for consumer in consumed_calorie %}
+    {% if forloop.first %}
+    <div class="row bg-warning rounded my-4">
+        <h1 class="display-5 text-center col-md-6">{{ consumer.date }}</h1>
+        <h1 class="display-5 text-center col-md-6">{{ consumer.total_calorie }} calorie{{ consumer.total_calorie|pluralize }}</h1>
+    </div>
+    <div>
+        <hr>
+        <h4>Last 6 entries:</h4>
+    </div>
+    {% else %}
+    <div class="row bg-success my-1">
+        <p class="text-center col-md-6">{{ consumer.date }}</p>
+        <p class="text-center col-md-6">{{ consumer.total_calorie }} calorie{{ consumer.total_calorie|pluralize }}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endblock page_content %}

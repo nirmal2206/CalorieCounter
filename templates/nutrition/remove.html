@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Calorie Counter-Remove
+{% endblock title %}
+
+{% block page_content %}
+
+<div class="container begin-content">
+    <div class="row">
+        <div class="col offset-md-4 col-md-4 bg-light">
+            <h4 class="text-center my-3"><strong>{{food.food_name.title}}</strong></h4>
+            <p class="text-center">Serving size: {{food.serving_size}}<i>g</i></p>
+            <p class="text-center">Energy: {{food.calories}} cal</p>
+        
+    
+            <form action="" method="post" class="my-4">
+            {% csrf_token %}
+                <div class="input-group mb-3">
+                    <input type="number" class="border rounded col col-md-10 mr-3" name="serving" id="serving" placeholder="Enter your Serving size(in g)">
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-md btn-block">
+                            <span class="fa fa-minus text-danger" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock page_content %}
